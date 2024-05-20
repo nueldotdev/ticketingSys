@@ -3,50 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Yantramanav:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
-    <link rel="shortcut icon" href="/images/logo/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0" />
+    <!-- <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/> -->
+    <!-- <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AtWA8GVjPcnhEdywcwPDOMMNX5CWiGpxp3xVhHN8oEfxhwEA6Yn7nZ_Ho6y76KHm'></script> -->
+    <link rel="stylesheet" href="css/admin.css">
     <title>Healtha - Dashboard</title>
 </head>
 <body>
     <div class="main-body">
         <div class="dash-nav">
             <div class="top-logo">
-                <img src="/images/logo/logo.png" alt="">
-                <h2>Healtha</h2>
+                <span class="material-symbols-rounded">
+                    radar
+                </span>
+                <h2>Radar.</h2>
             </div>
             <div class="nav-btns">
                 <ul>
                     <li>
                         <button class="active li-btn"  data-target="dashboard-screen">
-                            <i class="fa-solid fa-house"></i>
-                            Dashboard
+                            <span class="material-symbols-rounded">
+                                dashboard
+                            </span>
+                            <p>Dashboard</p>
                         </button>
                     </li>
                     <li>
-                        <button class="li-btn"  data-target="register-screen">
-                            <i class="fa-solid fa-book-medical"></i>
-                            Registers
+                        <button class="li-btn"  data-target="account-screen">
+                            <span class="material-symbols-rounded">
+                                account_box
+                            </span>
+                            <p>Accounts</p>
                         </button>
                     </li>
                     <li>
                         <button class="li-btn"  data-target="patient-screen">
-                            <i class="fa-solid fa-bed"></i>
-                            Patients
-                        </button>
-                    </li>
-                    <li>
-                        <button class="li-btn"  data-target="staff-screen">
-                            <i class="fa-solid fa-user-doctor"></i>
-                            Staff
+                            <span class="material-symbols-rounded">
+                                confirmation_number
+                            </span>
+                            <p>Tickets</p>
                         </button>
                     </li>
                     <li>
                         <button class="li-btn"  data-target="payment-screen">
-                            <i class="fa-solid fa-money-bill"></i>
-                            Payments
+                            <span class="material-symbols-rounded">
+                                directions_bus
+                            </span>
+                            <p>Buses</p>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="li-btn">
+                            <span class="material-symbols-rounded">
+                                receipt_long
+                            </span>
+                            <p>Transactions</p>
                         </button>
                     </li>
                 </ul>
@@ -56,12 +71,10 @@
             <div class="dash-top-screen">
                 <h2 class="screen-title">Dashboard</h2>
                 <div class="top-screen-right">
-                    <div class="user-sect">
-                        <p>Dr. Ted</p>
-                        <i class="fa-solid fa-user"></i>
-                    </div>
                     <button class="logout">
-                        Logout
+                        <span class="material-symbols-rounded">
+                            logout
+                        </span>
                     </button>
                 </div>
             </div>
@@ -69,26 +82,43 @@
                 <div class="main-contained">
                     <div class="dashboard-screen active off dashboard" id="dashboard-screen">
                         <div class="overview-box-cont">
-                            <div class="overview-box"></div>
-                            <div class="overview-box"></div>
-                            <div class="overview-box"></div>
-                            <div class="overview-box"></div>
+                            <div class="overview-box">
+                                <h3>Accounts</h3>
+                            </div>
+                            <div class="overview-box">
+                                <h3>Tickets</h3>
+                            </div>
+                            <div class="overview-box">
+                                <div class="ovb-inner">
+                                    <h3>Buses</h3>
+                                    <p id="buses-count">
+                                        <span class="material-symbols-rounded">
+                                            directions_bus
+                                        </span>
+                                        <span id="bus-count">10</span>
+                                        <span>Available</span>
+                                    </p>
+                                    <p id="buses-avail"></p>
+                                </div>
+                            </div>
+                            <div class="overview-box">
+                                <h3>Transactions</h3>
+                            </div>
                         </div>
-                        
                         <div class="overview-tables">
-                            <div class="ov-table">
-                                <img src="/public/images/media/patients.png" alt="Patients chart">
-                            </div>
-                            <div class="ov-table">
-                                <img src="/public/images/media/staff.png" alt="staff chart">
-                            </div>
+                            <div id='myMap'></div>
                         </div>
                     </div>
-                    <div class="register-screen off registers" id="register-screen">
+                    <div class="register-screen off registers" id="account-screen">
                         <div class="screen-top-contained">
                             <div class="stc-left">
-                                <h1 class="screen-table-name">All Registers</h1>
                             <div class="btn-cont-rf">
+                                <div class="btn-actions">
+                                    <button class="active-action-btn" type="button" id="activeActionBtn" aria-expanded="false" data-target="account-modal">
+                                        <span class="material-symbols-rounded">add</span>
+                                        <p>Add</p>
+                                    </button>
+                                </div>
                                 <button class="refresh-button" id="rf-btn">
                                     <i class="fa-solid fa-arrows-rotate"></i>
                                 </button>
@@ -100,16 +130,6 @@
                                     <label for="paginationSwitch">Enable Pagination:</label>
                                     <input type="checkbox" id="paginationSwitch" data-page="register-screen" checked>
                                 </div>
-                                <div class="btn-actions">
-                                    <button class="active-action-btn" type="button" id="activeActionBtn" aria-expanded="false" data-target="regForm>
-                                        <i class="fas fa-plus"></i> <!-- Default icon (add) -->
-                                        Add
-                                      </button>
-                                    <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa-solid fa-caret-down"></i>
-                                    </button>
-                                </div>
-
                               </div>
                               
                         </div>
@@ -119,49 +139,21 @@
                                     <form id="search-form" action="" enctype="multipart/form-data">
                                         
                                             <input class="form-control" type="text" placeholder="Search" />
-                                        
-                                       
                                             <button type="submit" class="btn btn-block btn-primary">Search</button>
                                         
                                     </form>
                                 </div>
-                                <!-- <div class="row" id="filter">
-                                    <form>
-                                            <select data-filter="make" class="filter-make filter form-control">
-                                                <option value="">Select Make</option>
-                                                <option value="">Show All</option>
-                                            </select>
-                                        
-                                            <select data-filter="model" class="filter-model filter form-control">
-                                                <option value="">Select Model</option>
-                                                <option value="">Show All</option>
-                                            </select>
-                                        
-                                            <select data-filter="type" class="filter-type filter form-control">
-                                                <option value="">Select Type</option>
-                                                <option value="">Show All</option>
-                                            </select>
-                                            <select data-filter="price" class="filter-price filter form-control">
-                                                <option value="">Select Price Range</option>
-                                                <option value="">Show All</option>
-                                            </select>
-                                    </form>
-                                </div> -->
-                                <!-- <div class="row" id="products">
-                                    
-                                </div> -->
                             </div>
                         </div>
                         <div class="table-structure">
                             <table id="regTable">
                                 <thead>
                                     <tr>
-                                        <th>Reg. Id</th>
-                                        <th>Name</th>
-                                        <th>Age</th>
-                                        <th>Gender</th>
-                                        <th>Patient</th>
-                                        <th>Date</th>
+                                        <th>ID</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>Phone No.</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -173,50 +165,6 @@
                                 <button id="prevBtn"><i class="fa-solid fa-circle-chevron-left"></i></button>
                                 <span id="pageInfo">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></span>
                                 <button id="nextBtn"><i class="fa-solid fa-circle-chevron-right"></i></button>
-                            </div>
-                        </div>
-                        <div class="main-form-all active" id="regForm">
-                            <div class="form-inner-con">
-                                <h2 class="title-bar">Registration</h2>
-                            <form class="grid-container">
-                                <div class="id-contained" hidden>
-                                    <input type="text" name="id">
-                                </div>
-                                <div class="grid-item item item1">
-                                    <label for="name">Name:</label>
-                                    <input type="text" name="name">
-                                </div>
-                                <div class="grid-item item item2">
-                                    <label for="gender">Gender:</label>
-                                    <select name="gender" id="gSelect">
-                                        <option value="" default disabled>Select Gender</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
-                                </div>
-                                <div class="grid-item item item3">
-                                    <label for="age">Age:</label>
-                                    <input type="number" name="age">
-                                </div>
-                                <div class="grid-item item item4">
-                                    <label for="address">Address:</label>
-                                    <input type="text" name="address">
-                                </div>
-                                <div class="grid-item item item5">
-                                    <label for="is_patient">Is Patient:</label>
-                                    <select name="is_patient" id="">
-                                        <option value="true" default>True</option>
-                                        <option value="false">False</option>
-                                    </select>
-                                </div>
-                                <div class="grid-item item item6">
-                                    <label for="contact">Contact:</label>
-                                    <input type="tel" name="contact">
-                                </div>
-                                <div class="grid-item item7">
-                                    <button type="submit">Submit</button>
-                                </div>
-                            </form>
                             </div>
                         </div>
                     </div>
@@ -286,17 +234,6 @@
                                 <button id="nextBtn"><i class="fa-solid fa-circle-chevron-right"></i></button>
                             </div>
                         </div>
-                        <!-- <div class="form-contained">
-                            <form id="patientsForm">
-                                <input type="text" name="name" placeholder="Name">
-                                <input type="text" name="role" placeholder="Role">
-                                <input type="tel" name="contact" placeholder="Contact">
-                                <input type="email" name="email" placeholder="Email">
-                                <input type="text" name="department" placeholder="Department">
-                                <button type="submit">Submit</button>
-                            </form>
-                            
-                        </div> -->
                     </div>
                     <div class="staff-screen off staff" id="staff-screen">
                         <div class="screen-top-contained">
@@ -331,16 +268,11 @@
                             <div class="search-contained-area">
                                 <div class="row" id="search">
                                     <form id="search-form" action="" enctype="multipart/form-data">
-                                        
                                             <input class="form-control" type="text" placeholder="Search" />
-                                        
-                                       
                                             <button type="submit" class="btn btn-block btn-primary">Search</button>
-                                        
                                     </form>
                                     <div id="search-result"></div>
                                 </div>
-                                
                             </div>
                         </div>
                         <div class="table-structure">
@@ -366,83 +298,99 @@
                                 <button id="nextBtn"><i class="fa-solid fa-circle-chevron-right"></i></button>
                             </div>
                         </div>
-                        <div class="main-form-all active" id="staffForm">
-                            <div class="form-inner-con">
-                                <h2 class="title-bar">Staff Form</h2>
-                            <form class="grid-container">
-                                <div class="id-contained" hidden>
-                                    <input type="text" name="id">
-                                </div>
-                                <div class="grid-item item item1">
-                                    <label for="name">Name:</label>
-                                    <input type="text" name="name">
-                                </div>
-                                <div class="grid-item item item2">
-                                    <label for="gender">Gender:</label>
-                                    <select name="gender" id="gSelect">
-                                        <option value="" default disabled>Select Gender</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
-                                </div>
-                                <div class="grid-item item item3">
-                                    <label for="role">Role:</label>
-                                    <input type="text" name="role">
-                                </div>
-                                <div class="grid-item item item4">
-                                    <label for="department">Department</label>
-                                    <input type="text" name="department">
-                                </div>
-                                <div class="grid-item item item5">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" id="">
-                                </div>
-                                <div class="grid-item item item6">
-                                    <label for="contact">Contact:</label>
-                                    <input type="tel" name="contact">
-                                </div>
-                                <div class="grid-item item7">
-                                    <button type="submit">Submit</button>
-                                </div>
-                            </form>
-                            </div>
-                        </div>
                     </div>
                     <div class="payment-screen off payment" id="payment-screen"></div>
                 </div>
-                <!-- <div class="overview-box-cont">
-                    <div class="overview-box"></div>
-                    <div class="overview-box"></div>
-                    <div class="overview-box"></div>
-                    <div class="overview-box"></div>
-                </div> -->
             </div>
         </div>
-        <!-- <div class="all-main-forms active" id="editForm">
-            <form id="editStaffForm">
-                <input type="text" id="editName" placeholder="Name" name="Name">
-                <input type="text" id="editRole" placeholder="Role" name="Role">
-                <input type="text" id="editDepartment" placeholder="Department" name="Department">
-                <input type="email" id="editEmail" placeholder="Email" name="Email">
-                <input type="tel" id="editContact" placeholder="Contact" name="Contact">
-                <button type="submit">Update</button>
-            </form>
-        </div>
+        <div class="modal-forms">
+            <div class="main-form-all" id="regForm">
+                <div class="form-inner-con">
+                    <h2 class="title-bar">Registration</h2>
+                <form class="grid-container">
+                    <div class="id-contained" hidden>
+                        <input type="text" name="id">
+                    </div>
+                    <div class="grid-item item item1">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name">
+                    </div>
+                    <div class="grid-item item item2">
+                        <label for="gender">Gender:</label>
+                        <select name="gender" id="gSelect">
+                            <option value="" default disabled>Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="grid-item item item3">
+                        <label for="age">Age:</label>
+                        <input type="number" name="age">
+                    </div>
+                    <div class="grid-item item item4">
+                        <label for="address">Address:</label>
+                        <input type="text" name="address">
+                    </div>
+                    <div class="grid-item item item5">
+                        <label for="is_patient">Is Patient:</label>
+                        <select name="is_patient" id="">
+                            <option value="true" default>True</option>
+                            <option value="false">False</option>
+                        </select>
+                    </div>
+                    <div class="grid-item item item6">
+                        <label for="contact">Contact:</label>
+                        <input type="tel" name="contact">
+                    </div>
+                    <div class="grid-item item7">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+                </div>
+            </div>
 
-        <div class="all-main-forms" id="regForm">
-            <form id="editRegForm">
-                <input type="text" id="editName" placeholder="Name">
-                <input type="text" id="editRole" placeholder="Role">
-                <input type="text" id="editDepartment" placeholder="Department">
-                <input type="email" id="editEmail" placeholder="Email">
-                <input type="text" id="editContact" placeholder="Contact">
-                <button type="submit">Update</button>
-            </form>
+            <div class="main-form-all" id="staffForm">
+                <div class="form-inner-con">
+                    <h2 class="title-bar">Staff Form</h2>
+                <form class="grid-container">
+                    <div class="id-contained" hidden>
+                        <input type="text" name="id">
+                    </div>
+                    <div class="grid-item item item1">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name">
+                    </div>
+                    <div class="grid-item item item2">
+                        <label for="gender">Gender:</label>
+                        <select name="gender" id="gSelect">
+                            <option value="" default disabled>Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="grid-item item item3">
+                        <label for="role">Role:</label>
+                        <input type="text" name="role">
+                    </div>
+                    <div class="grid-item item item4">
+                        <label for="department">Department</label>
+                        <input type="text" name="department">
+                    </div>
+                    <div class="grid-item item item5">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="">
+                    </div>
+                    <div class="grid-item item item6">
+                        <label for="contact">Contact:</label>
+                        <input type="tel" name="contact">
+                    </div>
+                    <div class="grid-item item7">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+                </div>
+            </div>
         </div>
-
-        <div class="all-main-forms" id="patientsForm">
-            
-        </div> -->
         <div class="main-form-all" id="regForm">
             <div class="form-inner-con">
                 <h2 class="title-bar">Registration</h2>
@@ -486,9 +434,20 @@
         </div>
     </div>
 
-    <script src="/js/admin.js"></script>
-    <script src="/js/adminForms.js"></script>
-    <script src="/js/adminPageBtns.js"></script>
+    <script src="js/admin.js"></script>
+    <script type="module" src="https://www.bing.com/api/maps/mapcontrol?key=AtWA8GVjPcnhEdywcwPDOMMNX5CWiGpxp3xVhHN8oEfxhwEA6Yn7nZ_Ho6y76KHm"></script>
+    <script>
+        
+var map;
+function loadMapScenario() {
+    map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
+}
+
+loadMapScenario()
+    </script>
+    <script src="index.js" type="module"></script>
+    <script src="js/adminForms.js"></script>
+    <script src="js/adminPageBtns.js"></script>
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 </body>
 </html>
