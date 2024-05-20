@@ -8,7 +8,7 @@ function loadMapScenario() {
 }
 
 // async function getDocs() {
-//     getReg();
+// getReg();
 //     getPatients();
 //     getStaff();
 // }
@@ -60,8 +60,8 @@ const busScreen = document.getElementById("bus-screen");
 
 // Forms 
 
-const regForm = registerScreen.querySelector(".main-form-all#regForm form");
-const staffForm = staffScreen.querySelector(".main-form-all#staffForm form");
+const regForm = accountScreen.querySelector(".main-form-all#regForm form");
+// const staffForm = staffScreen.querySelector(".main-form-all#staffForm form");
 
 const listItems = document.querySelectorAll(".li-btn");
 const divs = document.querySelectorAll(".main-contained > div");
@@ -144,24 +144,26 @@ const getStaff = async () => {
 // Fetch register data from the backend API
 const getReg = async () => {
     try {
-        const response = await fetch('/api/registers');
+        const response = await fetch('https://habeeb1234.pythonanywhere.com/get_all_users/');
         allReg = await response.json();
-        const pageSwitch = document.querySelector('.register-screen #paginationSwitch');
-        const pagControls = document.querySelector('.staff-screen #pagination');
+        // const pageSwitch = document.querySelector('.register-screen #paginationSwitch');
+        // const pagControls = document.querySelector('.staff-screen #pagination');
 
-        if (pageSwitch.checked) {
-            pagControls.style.display = 'flex';
-        } else {
-            pagControls.style.display = 'none';
-        }
+        // if (pageSwitch.checked) {
+        //     pagControls.style.display = 'flex';
+        // } else {
+        //     pagControls.style.display = 'none';
+        // }
 
-        updateTables('register-screen', allReg, currentPage, pageSwitch.checked);
-        updatePaginationInfo('register-screen', allReg);
+        updateTables('account-screen', allReg, currentPage, pageSwitch.checked);
+        updatePaginationInfo('account-screen', allReg);
     } catch (error) {
         console.error('Error fetching data:', error);
     }
 }
 
+
+getReg();
 
 
 
@@ -367,24 +369,22 @@ function updateTables(page, array, pageNo, paginate) {
 
     tableBody.innerHTML = ''; // Clear existing table rows
 
-    if (bodyParent.classList.contains("staff-screen")) {
-        pageList.forEach((staff, index) => {
+    if (bodyParent.classList.contains("account-screen")) {
+        array.forEach((accounts, index) => {
             const row = document.createElement('tr');
-            let id = `${staff.id}`
+            let id = `${accounts.id}`
             console.log(`ID => ${id}`)
 
             row.innerHTML = `
-                <td>${index + 1}</td>
-                <td>${staff.name}</td>
-                <td>${staff.role}</td>
-                <td>${staff.department}</td>
-                <td>${staff.email}</td>
-                <td>${staff.contact}</td>
+                <td>${accounts.first_name}</td>
+                <td>${accounts.last_name}</td>
+                <td>${accounts.email}</td>
+                <td>${accounts.phone_number}</td>
                 <td>
-                    <button class="edit-btn" data-id="${staff._id}" data-collection="staff" onclick="editRecord(event)">
+                    <button class="edit-btn" data-id="${accounts.username}" data-collection="accounts" onclick="editRecord(event)">
                     <i class="fa-regular fa-pen-to-square"></i>
                     </button>
-                    <button class="delete delete-btn" data-id="${staff._id}" data-collection="staff" onclick="delRecord(event)">
+                    <button class="delete delete-btn" data-id="${accounts.username}" data-collection="accounts" onclick="delRecord(event)">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </td>`
