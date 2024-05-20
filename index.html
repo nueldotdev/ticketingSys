@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Metadata section: character encoding, viewport settings, title -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Preconnect to Google Fonts for better performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Link to Google Fonts stylesheet -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Link to Font Awesome stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Link to Material Symbols stylesheet -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0" />
-    <!-- <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/> -->
-    <!-- <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AtWA8GVjPcnhEdywcwPDOMMNX5CWiGpxp3xVhHN8oEfxhwEA6Yn7nZ_Ho6y76KHm'></script> -->
+    <!-- Link to the custom admin CSS file -->
     <link rel="stylesheet" href="css/admin.css">
+    <!-- Page title -->
     <title>Healtha - Dashboard</title>
 </head>
 <body>
+    <!-- Main container for the body content -->
     <div class="main-body">
+        <!-- Navigation section -->
         <div class="dash-nav">
+            <!-- Logo section -->
             <div class="top-logo">
                 <span class="material-symbols-rounded">
                     radar
                 </span>
                 <h2>Radar.</h2>
             </div>
+            <!-- Navigation buttons section -->
             <div class="nav-btns">
                 <ul>
                     <li>
-                        <button class="active li-btn"  data-target="dashboard-screen">
+                        <button class="active li-btn" data-target="dashboard-screen">
                             <span class="material-symbols-rounded">
                                 dashboard
                             </span>
@@ -33,7 +42,7 @@
                         </button>
                     </li>
                     <li>
-                        <button class="li-btn"  data-target="account-screen">
+                        <button class="li-btn" data-target="account-screen">
                             <span class="material-symbols-rounded">
                                 account_box
                             </span>
@@ -41,7 +50,7 @@
                         </button>
                     </li>
                     <li>
-                        <button class="li-btn"  data-target="patient-screen">
+                        <button class="li-btn" data-target="patient-screen">
                             <span class="material-symbols-rounded">
                                 confirmation_number
                             </span>
@@ -49,7 +58,7 @@
                         </button>
                     </li>
                     <li>
-                        <button class="li-btn"  data-target="payment-screen">
+                        <button class="li-btn" data-target="payment-screen">
                             <span class="material-symbols-rounded">
                                 directions_bus
                             </span>
@@ -67,6 +76,7 @@
                 </ul>
             </div>
         </div>
+        <!-- Main dashboard screen -->
         <div class="dash-screen">
             <div class="dash-top-screen">
                 <h2 class="screen-title">Dashboard</h2>
@@ -80,6 +90,7 @@
             </div>
             <div class="dash-screen-main">
                 <div class="main-contained">
+                    <!-- Dashboard overview section -->
                     <div class="dashboard-screen active off dashboard" id="dashboard-screen">
                         <div class="overview-box-cont">
                             <div class="overview-box">
@@ -106,47 +117,48 @@
                             </div>
                         </div>
                         <div class="overview-tables">
+                            <!-- Map container -->
                             <div id='myMap'></div>
                         </div>
                     </div>
+                    <!-- Accounts section -->
                     <div class="register-screen off registers" id="account-screen">
                         <div class="screen-top-contained">
                             <div class="stc-left">
-                            <div class="btn-cont-rf">
-                                <div class="btn-actions">
-                                    <button class="active-action-btn" type="button" id="activeActionBtn" aria-expanded="false" data-target="account-modal">
-                                        <span class="material-symbols-rounded">add</span>
-                                        <p>Add</p>
+                                <div class="btn-cont-rf">
+                                    <div class="btn-actions">
+                                        <!-- <button class="active-action-btn" type="button" id="activeActionBtn" aria-expanded="false" data-target="account-modal">
+                                            <span class="material-symbols-rounded">add</span>
+                                            <p>Add</p>
+                                        </button> -->
+                                    </div>
+                                    <button class="refresh-button" id="rf-btn">
+                                        <i class="fa-solid fa-arrows-rotate"></i>
                                     </button>
+                                    <p id="rf-state"></p>
                                 </div>
-                                <button class="refresh-button" id="rf-btn">
-                                    <i class="fa-solid fa-arrows-rotate"></i>
-                                </button>
-                                <p id="rf-state"></p>
-                            </div>
                             </div>
                             <div class="dropdown">
                                 <div class="pagination-section-aab">
                                     <label for="paginationSwitch">Enable Pagination:</label>
                                     <input type="checkbox" id="paginationSwitch" data-page="register-screen" checked>
                                 </div>
-                              </div>
-                              
+                            </div>
                         </div>
+                        <!-- Search filter section -->
                         <div class="search-filter">
                             <div class="search-contained-area">
                                 <div class="row" id="search">
                                     <form id="search-form" action="" enctype="multipart/form-data">
-                                        
-                                            <input class="form-control" type="text" placeholder="Search" />
-                                            <button type="submit" class="btn btn-block btn-primary">Search</button>
-                                        
+                                        <input class="form-control" type="text" placeholder="Search" />
+                                        <button type="submit" class="btn btn-block btn-primary">Search</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
+                        <!-- Accounts table section -->
                         <div class="table-structure">
-                            <table id="regTable">
+                            <table id="accountTable">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -154,6 +166,7 @@
                                         <th>Last Name</th>
                                         <th>Email</th>
                                         <th>Phone No.</th>
+                                        <th>Balance</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -161,6 +174,7 @@
                                     <!-- Register data will be inserted here -->
                                 </tbody>
                             </table>
+                            <!-- Pagination controls -->
                             <div id="pagination">
                                 <button id="prevBtn"><i class="fa-solid fa-circle-chevron-left"></i></button>
                                 <span id="pageInfo">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></span>
@@ -168,16 +182,17 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Patients section -->
                     <div class="patient-screen off patients" id="patient-screen">
                         <div class="screen-top-contained">
                             <div class="stc-left">
                                 <h1 class="screen-table-name">All Patients</h1>
-                            <div class="btn-cont-rf">
-                                <button class="refresh-button" id="rf-btn">
-                                    <i class="fa-solid fa-arrows-rotate"></i>
-                                </button>
-                                <p id="rf-state"></p>
-                            </div>
+                                <div class="btn-cont-rf">
+                                    <button class="refresh-button" id="rf-btn">
+                                        <i class="fa-solid fa-arrows-rotate"></i>
+                                    </button>
+                                    <p id="rf-state"></p>
+                                </div>
                             </div>
                             <div class="dropdown">
                                 <div class="pagination-section-aab">
@@ -193,24 +208,20 @@
                                         <i class="fa-solid fa-caret-down"></i>
                                     </button>
                                 </div>
-
-                              </div>
-                              
+                            </div>
                         </div>
+                        <!-- Search filter section -->
                         <div class="search-filter">
                             <div class="search-contained-area">
                                 <div class="row" id="search">
                                     <form id="search-form" action="" enctype="multipart/form-data">
-                                        
-                                            <input class="form-control" type="text" placeholder="Search" />
-                                        
-                                       
-                                            <button type="submit" class="btn btn-block btn-primary">Search</button>
-                                        
+                                        <input class="form-control" type="text" placeholder="Search" />
+                                        <button type="submit" class="btn btn-block btn-primary">Search</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
+                        <!-- Patients table section -->
                         <div class="table-structure">
                             <table id="patientTable">
                                 <thead>
@@ -220,14 +231,15 @@
                                         <th>Age</th>
                                         <th>Gender</th>
                                         <th>Department</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>Phone No.</th>
+                                        <th>Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <!-- Patient data will be inserted here -->
                                 </tbody>
                             </table>
+                            <!-- Pagination controls -->
                             <div id="pagination">
                                 <button id="prevBtn"><i class="fa-solid fa-circle-chevron-left"></i></button>
                                 <span id="pageInfo">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></span>
@@ -235,10 +247,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="staff-screen off staff" id="staff-screen">
+                    <!-- Payments section -->
+                    <div class="payment-screen off payments" id="payment-screen">
                         <div class="screen-top-contained">
                             <div class="stc-left">
-                                <h1 class="screen-table-name">All Staff</h1>
+                                <h1 class="screen-table-name">All Payments</h1>
                                 <div class="btn-cont-rf">
                                     <button class="refresh-button" id="rf-btn">
                                         <i class="fa-solid fa-arrows-rotate"></i>
@@ -249,10 +262,10 @@
                             <div class="dropdown">
                                 <div class="pagination-section-aab">
                                     <label for="paginationSwitch">Enable Pagination:</label>
-                                    <input type="checkbox" id="paginationSwitch" data-page="staff-screen" checked>
+                                    <input type="checkbox" id="paginationSwitch" data-page="payment-screen" checked>
                                 </div>
                                 <div class="btn-actions">
-                                    <button class="active-action-btn" type="button" id="activeActionBtn" aria-expanded="false" data-target="staffForm">
+                                    <button class="active-action-btn" type="button" id="activeActionBtn" aria-expanded="false" data-target="patientForm">
                                         <i class="fas fa-plus"></i> <!-- Default icon (add) -->
                                         Add
                                       </button>
@@ -260,38 +273,36 @@
                                         <i class="fa-solid fa-caret-down"></i>
                                     </button>
                                 </div>
-
                             </div>
-                              
                         </div>
+                        <!-- Search filter section -->
                         <div class="search-filter">
                             <div class="search-contained-area">
                                 <div class="row" id="search">
                                     <form id="search-form" action="" enctype="multipart/form-data">
-                                            <input class="form-control" type="text" placeholder="Search" />
-                                            <button type="submit" class="btn btn-block btn-primary">Search</button>
+                                        <input class="form-control" type="text" placeholder="Search" />
+                                        <button type="submit" class="btn btn-block btn-primary">Search</button>
                                     </form>
-                                    <div id="search-result"></div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Payments table section -->
                         <div class="table-structure">
-                            <table id="staffTable">
+                            <table id="paymentTable">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>Role</th>
-                                        <th>Department</th>
-                                        <th>Email</th>
-                                        <th>Contact</th>
-                                        <th>Action</th>
+                                        <th>Transaction ID</th>
+                                        <th>Patient ID</th>
+                                        <th>Amount</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Patient data will be inserted here -->
+                                    <!-- Payment data will be inserted here -->
                                 </tbody>
                             </table>
+                            <!-- Pagination controls -->
                             <div id="pagination">
                                 <button id="prevBtn"><i class="fa-solid fa-circle-chevron-left"></i></button>
                                 <span id="pageInfo">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></span>
@@ -299,155 +310,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="payment-screen off payment" id="payment-screen"></div>
+                    <!-- Default screen message -->
+                    <!-- <p>Display the selected screen here</p> -->
                 </div>
-            </div>
-        </div>
-        <div class="modal-forms">
-            <div class="main-form-all" id="regForm">
-                <div class="form-inner-con">
-                    <h2 class="title-bar">Registration</h2>
-                <form class="grid-container">
-                    <div class="id-contained" hidden>
-                        <input type="text" name="id">
-                    </div>
-                    <div class="grid-item item item1">
-                        <label for="name">Name:</label>
-                        <input type="text" name="name">
-                    </div>
-                    <div class="grid-item item item2">
-                        <label for="gender">Gender:</label>
-                        <select name="gender" id="gSelect">
-                            <option value="" default disabled>Select Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                    </div>
-                    <div class="grid-item item item3">
-                        <label for="age">Age:</label>
-                        <input type="number" name="age">
-                    </div>
-                    <div class="grid-item item item4">
-                        <label for="address">Address:</label>
-                        <input type="text" name="address">
-                    </div>
-                    <div class="grid-item item item5">
-                        <label for="is_patient">Is Patient:</label>
-                        <select name="is_patient" id="">
-                            <option value="true" default>True</option>
-                            <option value="false">False</option>
-                        </select>
-                    </div>
-                    <div class="grid-item item item6">
-                        <label for="contact">Contact:</label>
-                        <input type="tel" name="contact">
-                    </div>
-                    <div class="grid-item item7">
-                        <button type="submit">Submit</button>
-                    </div>
-                </form>
-                </div>
-            </div>
-
-            <div class="main-form-all" id="staffForm">
-                <div class="form-inner-con">
-                    <h2 class="title-bar">Staff Form</h2>
-                <form class="grid-container">
-                    <div class="id-contained" hidden>
-                        <input type="text" name="id">
-                    </div>
-                    <div class="grid-item item item1">
-                        <label for="name">Name:</label>
-                        <input type="text" name="name">
-                    </div>
-                    <div class="grid-item item item2">
-                        <label for="gender">Gender:</label>
-                        <select name="gender" id="gSelect">
-                            <option value="" default disabled>Select Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                    </div>
-                    <div class="grid-item item item3">
-                        <label for="role">Role:</label>
-                        <input type="text" name="role">
-                    </div>
-                    <div class="grid-item item item4">
-                        <label for="department">Department</label>
-                        <input type="text" name="department">
-                    </div>
-                    <div class="grid-item item item5">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="">
-                    </div>
-                    <div class="grid-item item item6">
-                        <label for="contact">Contact:</label>
-                        <input type="tel" name="contact">
-                    </div>
-                    <div class="grid-item item7">
-                        <button type="submit">Submit</button>
-                    </div>
-                </form>
-                </div>
-            </div>
-        </div>
-        <div class="main-form-all" id="regForm">
-            <div class="form-inner-con">
-                <h2 class="title-bar">Registration</h2>
-            <form class="grid-container">
-                <div class="grid-item item item1">
-                    <label for="name">Name:</label>
-                    <input type="text" name="name">
-                </div>
-                <div class="grid-item item item2">
-                    <label for="gender">Gender:</label>
-                    <select name="gender" id="gSelect">
-                        <option value="" default>Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-                </div>
-                <div class="grid-item item item3">
-                    <label for="age">Age:</label>
-                    <input type="number" name="age">
-                </div>
-                <div class="grid-item item item4">
-                    <label for="address">Address:</label>
-                    <input type="text" name="address">
-                </div>
-                <div class="grid-item item item5">
-                    <label for="is_patient">Is Patient:</label>
-                    <select name="is_patient" id="">
-                        <option value="true" default>True</option>
-                        <option value="false">False</option>
-                    </select>
-                </div>
-                <div class="grid-item item item6">
-                    <label for="Contact">Contact:</label>
-                    <input type="tel" name="Contact">
-                </div>
-                <div class="grid-item item7">
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
             </div>
         </div>
     </div>
-
+    <!-- Import external JS libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-oH/G1ib8DME67U2N5L57u4eyM7fDP78vw2D4sqS8B9SA7U4A/0sGYaGncB4Jo/JjvRJgzjtMFLHCS0wUD8jdiQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-fuop+HlSMTE7OnkmkJ5A8z3RmZEKPXkD+Hp1LgSaQk5KYukMLrNPkt7+gDyy4hb2f6CUX0TiBqiIINmtoPSm6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <!-- Link to the custom admin JS file -->
     <script src="js/admin.js"></script>
-    <script type="module" src="https://www.bing.com/api/maps/mapcontrol?key=AtWA8GVjPcnhEdywcwPDOMMNX5CWiGpxp3xVhHN8oEfxhwEA6Yn7nZ_Ho6y76KHm"></script>
-    <script>
-        
-var map;
-function loadMapScenario() {
-    map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
-}
-
-loadMapScenario()
-    </script>
-    <script src="index.js" type="module"></script>
-    <script src="js/adminForms.js"></script>
-    <script src="js/adminPageBtns.js"></script>
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+    <script src="js/accounts.js"></script>
 </body>
 </html>
