@@ -182,6 +182,11 @@ const dummyUsers = [
   }, // Populate the account table with dummy users
 ];
 
+// Define arrays for tables
+let users = new Array();
+let busses = new Array();
+let tickets = new Array();
+
 // Define variables for pagination
 const itemsPerPage = 10;
 let currentPage = 1;
@@ -274,14 +279,31 @@ document.getElementById("search-form").addEventListener("input", (event) => {
   filterUsers(searchInput);
 });
 
-// // Function to handle refresh button click
-// const handleRefresh = () => {
-//   // Repopulate the account table with users for the current page
-//   populateAccountTable(dummyUsers, currentPage);
-// };
+// Function to handle refresh button click
+const handleRefresh = () => {
+  
+  rfpState = rfElement.nextElementSibling;
+  rfElement.style.animation = "rotate 1s infinite";
+  rfpState.textContent = "Getting...";
+  getDocs(); // Refresh data
+  setTimeout(function () {
+    rfpState.textContent = "Up to date";
+    rfElement.style.animation = "none";
+  }, 2000);
+  setTimeout(function () {
+    rfpState.textContent = "";
+  }, 4000);
+  
+  // Repopulate the account table with users for the current page
+  populateAccountTable(dummyUsers, currentPage);
+};
 
-// // Event listener for refresh button click
-// document.getElementById("rf-btn").addEventListener("click", handleRefresh);
+// Event listener for refresh button click
+const rfElement = document.getElementById("rf-btn").addEventListener("click", handleRefresh);
+
+rfElement.addEventListener("click", () => {});
+
+
 
 // Event listener for ban buttons
 document.querySelector("#accountTable").addEventListener("click", (event) => {
@@ -339,17 +361,16 @@ document.querySelector("#accountTable").addEventListener("click", (event) => {
 });
 
 // Commented out fetch API to fetch users from backend
-/*
-  const fetchUsers = async () => {
-      try {
-          const response = await fetch('/api/users');
-          const users = await response.json();
-          console.log(users);
-      } catch (error) {
-          console.error('Error fetching users:', error);
-      }
-  };
-  
-  // Uncomment this line to fetch users when ready
-  // fetchUsers();
-  */
+const fetchUsers = async () => {
+    try {
+        const response = await fetch('https://habeeb1234.pythonanywhere.com/get_all_users/');
+        const users = await response.json();
+        console.log(users);
+
+    } catch (error) {
+        console.error('Error fetching users:', error);
+    }
+};
+
+// Uncomment this line to fetch users when ready
+fetchUsers();
