@@ -50,7 +50,7 @@
                         </button>
                     </li>
                     <li>
-                        <button class="li-btn" data-target="patient-screen">
+                        <button class="li-btn" data-target="ticket-screen">
                             <span class="material-symbols-rounded">
                                 confirmation_number
                             </span>
@@ -66,10 +66,10 @@
                 <h2 class="screen-title">Dashboard</h2>
                 <div class="top-screen-right">
                     <div class="btn-cont-rf">
+                        <p id="rf-state"></p>
                         <button class="refresh-button" id="rf-btn">
                             <i class="fa-solid fa-arrows-rotate"></i>
                         </button>
-                        <p id="rf-state"></p>
                     </div>
                     <button class="logout">
                         <span class="material-symbols-rounded">
@@ -108,11 +108,11 @@
                         </div>
                         <div class="overview-tables">
                             <!-- Map container -->
-                            <div id='myMap'></div>
+                            <!-- <div id='myMap'></div> -->
                         </div>
                     </div>
                     <!-- Accounts section -->
-                    <div class="register-screen off registers" id="account-screen">
+                    <div class="account-screen off registers" id="account-screen">
                         <div class="screen-top-contained">
                             <div class="stc-left">
                                 <div class="btn-cont-rf">
@@ -127,7 +127,7 @@
                             <div class="dropdown">
                                 <div class="pagination-section-aab">
                                     <label for="paginationSwitch">Enable Pagination:</label>
-                                    <input type="checkbox" id="paginationSwitch" data-page="register-screen" checked>
+                                    <input type="checkbox" id="paginationSwitch" data-page="account-screen" checked>
                                 </div>
                             </div>
                         </div>
@@ -147,9 +147,9 @@
                             <table id="accountTable">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
+                                        <th>Username</th>
+                                        <th>Full Name</th>
+                                        <!-- <th>Last Name</th> -->
                                         <th>Email</th>
                                         <th>Phone No.</th>
                                         <th>Balance</th>
@@ -170,7 +170,7 @@
                         </div>
                     </div>
                     <!-- Patients section -->
-                    <div class="patient-screen off patients" id="patient-screen">
+                    <div class="ticket-screen off patients" id="ticket-screen">
                         <div class="screen-top-contained">
                             <div class="stc-left">
                                 <h1 class="screen-table-name">All Patients</h1>
@@ -178,7 +178,7 @@
                             <div class="dropdown">
                                 <div class="pagination-section-aab">
                                     <label for="paginationSwitch">Enable Pagination:</label>
-                                    <input type="checkbox" id="paginationSwitch" data-page="patient-screen" checked>
+                                    <input type="checkbox" id="paginationSwitch" data-page="ticket-screen" checked>
                                 </div>
                                 <div class="btn-actions">
                                     <button class="active-action-btn" type="button" id="activeActionBtn" aria-expanded="false" data-target="patientForm">

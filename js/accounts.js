@@ -182,6 +182,65 @@ const dummyUsers = [
   }, // Populate the account table with dummy users
 ];
 
+// Users in database
+const dbUsers = [
+  {
+      "email": "habeeb@gmail.com",
+      "username": "habeeb11",
+      "first_name": "Habeeb",
+      "last_name": "Mufutau",
+      "phone_number": "08120538916",
+      "is_superuser": false,
+      "is_active": true
+  },
+  {
+      "email": "habeeb2@gmail.com",
+      "username": "habeeb2",
+      "first_name": "Habeeb",
+      "last_name": "Mufutau",
+      "phone_number": "08120538916",
+      "is_superuser": false,
+      "is_active": true
+  },
+  {
+      "email": "oluwapelumiodus@gmail.com",
+      "username": "Timmilytim",
+      "first_name": "Oluwatimilehin",
+      "last_name": "Odusanya",
+      "phone_number": "09026067000",
+      "is_superuser": false,
+      "is_active": true
+  },
+  {
+      "email": "ejovwoitemabob@gmail.com",
+      "username": "Bolu",
+      "first_name": "Itemabo",
+      "last_name": "Ejovwo",
+      "phone_number": "08026541779",
+      "is_superuser": false,
+      "is_active": true
+  },
+  {
+      "email": "bakreridwan77@gmail.com",
+      "username": "Redking",
+      "first_name": "ridwan",
+      "last_name": "bakre",
+      "phone_number": "08187144171",
+      "is_superuser": false,
+      "is_active": true
+  },
+  {
+      "email": "damolafolorunso@gmail.com",
+      "username": "dams",
+      "first_name": "adedamola",
+      "last_name": "folorunso",
+      "phone_number": "09079583964",
+      "is_superuser": false,
+      "is_active": true
+  }
+]
+
+
 // Define arrays for tables
 let users = new Array();
 let busses = new Array();
@@ -190,7 +249,7 @@ let tickets = new Array();
 // Define variables for pagination
 const itemsPerPage = 10;
 let currentPage = 1;
-let totalUsers = dummyUsers.length;
+let totalUsers = dbUsers.length;
 let totalPages = Math.ceil(totalUsers / itemsPerPage);
 
 // Function to populate the account table with users based on pagination
@@ -206,13 +265,12 @@ const populateAccountTable = (users, page) => {
     const row = document.createElement("tr");
 
     row.innerHTML = `
-            <td>${user.id}</td>
-            <td>${user.firstName}</td>
-            <td>${user.lastName}</td>
+            <td>${user.username}</td>
+            <td>${user.first_name} ${user.last_name}</td>
             <td>${user.email}</td>
-            <td>${user.phone}</td>
+            <td>${user.phone_number}</td>
             <td>${user.balance}</td>
-            <td class="status">active</td>
+            <td class="status">${user.is_active}</td>
             <td><button class="ban-btn" data-id="${user.id}">Ban</button></td>
         `;
 
@@ -227,7 +285,7 @@ const updatePaginationInfo = () => {
 };
 
 // Initial display of users and pagination info
-populateAccountTable(dummyUsers, currentPage);
+populateAccountTable(dbUsers, currentPage);
 updatePaginationInfo();
 
 // Function to handle pagination navigation
@@ -239,7 +297,7 @@ const navigatePagination = (direction) => {
   }
 
   // Repopulate the account table with users for the updated page
-  populateAccountTable(dummyUsers, currentPage);
+  populateAccountTable(dbUsers, currentPage);
   updatePaginationInfo();
 };
 
@@ -253,8 +311,8 @@ document
 
 // Function to filter users based on search input
 const filterUsers = (searchInput) => {
-  const filteredUsers = dummyUsers.filter((user) => {
-    const fullName = `${user.firstName} ${user.lastName}`.toLowerCase();
+  const filteredUsers = dbUsers.filter((user) => {
+    const fullName = `${user.first_name} ${user.last_name}`.toLowerCase();
     return fullName.includes(searchInput.toLowerCase());
   });
 
@@ -280,12 +338,16 @@ document.getElementById("search-form").addEventListener("input", (event) => {
 });
 
 // Function to handle refresh button click
+
+// Event listener for refresh button click
+const rfElement = document.getElementById("rf-btn");
+
 const handleRefresh = () => {
   
-  rfpState = rfElement.nextElementSibling;
+  rfpState = rfElement.previousElementSibling;
   rfElement.style.animation = "rotate 1s infinite";
   rfpState.textContent = "Getting...";
-  getDocs(); // Refresh data
+  // getDocs(); // Refresh data
   setTimeout(function () {
     rfpState.textContent = "Up to date";
     rfElement.style.animation = "none";
@@ -297,12 +359,7 @@ const handleRefresh = () => {
   // Repopulate the account table with users for the current page
   populateAccountTable(dummyUsers, currentPage);
 };
-
-// Event listener for refresh button click
-const rfElement = document.getElementById("rf-btn").addEventListener("click", handleRefresh);
-
-rfElement.addEventListener("click", () => {});
-
+rfElement.addEventListener("click", handleRefresh);
 
 
 // Event listener for ban buttons
@@ -363,7 +420,9 @@ document.querySelector("#accountTable").addEventListener("click", (event) => {
 // Commented out fetch API to fetch users from backend
 const fetchUsers = async () => {
     try {
-        const response = await fetch('https://habeeb1234.pythonanywhere.com/get_all_users/');
+        const response = await fetch('https://habeeb1234.pythonanywhere.com/get_all_users/', {
+          method: 'GET'
+        });
         const users = await response.json();
         console.log(users);
 
