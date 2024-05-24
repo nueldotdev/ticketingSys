@@ -40,8 +40,8 @@
 
 .dash-screen-main {
     height: 100%;
-    padding: 1rem;
     overflow: auto;
+    overflow-x: hidden;
 }
 
 /* Top logo section styling */
@@ -173,7 +173,8 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin: 0 0 1rem;
+    margin: 3rem 0.4rem;
+    /* padding: 1rem; */
 }
 
 .overview-box {
@@ -182,7 +183,26 @@
     border-radius: 10px;
     background-color: white;
     display: flex;
-    margin: 0 10px;
+    margin: 0 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 20px;
+}
+
+.overview-box h3 {
+    text-align: center;
+}
+
+#buses-count {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 5px;
+}
+
+.material-symbols-rounded {
+    margin-right: 5px;
 }
 
 /* Overview tables styling */
@@ -538,4 +558,23 @@ tbody tr:hover {
 
 .ban-btn.green {
     background-color: var(--brand-color);
+}
+
+
+/* Google maps Section */
+
+.map {
+    background-color: var(--brand-color);
+    padding: 2rem 0;
+}
+
+.map h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+    color: white;
+    border: 0;
+}
+
+.map iframe {
+    width: 100%;
 }
