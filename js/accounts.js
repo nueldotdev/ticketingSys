@@ -419,16 +419,20 @@ document.querySelector("#accountTable").addEventListener("click", (event) => {
 
 // Commented out fetch API to fetch users from backend
 const fetchUsers = async () => {
-    try {
-        const response = await fetch('https://habeeb1234.pythonanywhere.com/get_all_users/', {
-          method: 'GET'
-        });
-        const users = await response.json();
-        console.log(users);
+  const requestOptions = {
+    method: "GET",
+    redirect: "follow"
+  };
+    // try {
+    //     const response = fetch('https://nekos.pro/api/ass/', {
+    //       method: 'GET',
+    //     });
+    //     const users = await response.json();
+    //     console.log(users);
 
-    } catch (error) {
-        console.error('Error fetching users:', error);
-    }
+    // } catch (error) {
+    //     console.error('Error fetching users:', error);
+    // }
 };
 
 // Uncomment this line to fetch users when ready
