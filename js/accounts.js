@@ -197,3 +197,8 @@ const fetchUsers = async () => {
 
 // Call the fetchUsers function
 fetchUsers();
+
+
+
+// Get Total
+var userTotal;
