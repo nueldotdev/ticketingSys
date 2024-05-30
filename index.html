@@ -97,7 +97,7 @@
                   </p>
                   <p id="number-avail">
                       <span>Total: </span>
-                      <span class="bus-count">10</span>
+                      <span class="bus-count" id="tAcc"></span>
                   </p>
                 </div>
                 <div class="overview-box">
@@ -109,19 +109,19 @@
                   </p>
                   <p id="number-avail">
                     <span>Total: </span>
-                    <span class="bus-count">10</span>
+                    <span class="bus-count" id="tTik"></span>
                 </p>
                 </div>
                 <div class="overview-box">
-                  <h3>Buses</h3>
+                  <h3>Transaction</h3>
                     <p id="count-icons">
-                      <span class="material-symbols-rounded">
-                        directions_bus
-                      </span>
+                      <!-- <span class="material-symbols-rounded">
+                        currency_exchange
+                      </span> -->
                     </p>
                     <p id="number-avail">
                       <span>Total: </span>
-                      <span class="bus-count">10</span>
+                      <span class="bus-count" id="tTran"></span>
                   </p>
                 </div>
                 <!-- <div class="overview-box">
@@ -158,7 +158,7 @@
                 </div>
                 <div class="dropdown">
                   <div class="pagination-section-aab">
-                    <label for="paginationSwitch">Enable Pagination:</label>
+                    <label for="paginationSwitch">Enable Pagination</label>
                     <input
                       type="checkbox"
                       id="paginationSwitch"
@@ -227,20 +227,21 @@
             <div class="ticket-screen off patients" id="ticket-screen">
               <div class="screen-top-contained">
                 <div class="stc-left">
-                  <h1 class="screen-table-name">All Patients</h1>
+                  <h1 class="screen-table-name">All Tickets</h1>
                 </div>
                 <div class="dropdown">
                   <div class="pagination-section-aab">
-                    <label for="paginationSwitch">Enable Pagination:</label>
+                    <label for="paginationSwitch">Enable Pagination</label>
                     <input
                       type="checkbox"
                       id="paginationSwitch"
                       data-page="ticket-screen"
                       checked
+                      hidden
                     />
                   </div>
-                  <div class="btn-actions">
-                    <button
+                  <div class="">
+                    <!-- <button
                       class="active-action-btn"
                       type="button"
                       id="activeActionBtn"
@@ -248,10 +249,10 @@
                       data-target="patientForm"
                     >
                       <i class="fas fa-plus"></i>
-                      <!-- Default icon (add) -->
+                      Default icon (add)
                       Add
-                    </button>
-                    <button
+                    </button> -->
+                    <!-- <button
                       class="dropdown-toggle"
                       type="button"
                       id="dropdownMenuButton"
@@ -260,7 +261,7 @@
                       aria-expanded="false"
                     >
                       <i class="fa-solid fa-caret-down"></i>
-                    </button>
+                    </button> -->
                   </div>
                 </div>
               </div>
@@ -290,13 +291,14 @@
                 <table id="patientTable">
                   <thead>
                     <tr>
-                      <th>Reg. Id</th>
-                      <th>Name</th>
-                      <th>Age</th>
-                      <th>Gender</th>
-                      <th>Department</th>
-                      <th>Phone No.</th>
-                      <th>Date</th>
+                      <th>Ticket Id</th>
+                      <th>Trip Type</th>
+                      <th>From</th>
+                      <th>To</th>
+                      <th>Booking Date</th>
+                      <th>Transport Date</th>
+                      <th>Price</th>
+                      <th>Username</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -431,8 +433,8 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
-    <!-- Link to the custom admin JS file -->
+    <!-- Link to the custom JS file -->
     <script src="js/nav.js"></script>
-    <script src="js/accounts.js"></script>
+    <script src="js/tables.js"></script>
   </body>
 </html>
