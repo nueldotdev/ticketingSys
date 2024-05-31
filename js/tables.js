@@ -133,7 +133,7 @@
       const result = await response.json();
       const users = result.users;
       allUsers = users;
-      const wallets = result.wallets || [];
+      const wallets = result.wallet;
 
       dbUsers = users.map((user) => {
         const wallet = wallets.find((w) => w.user_id === user.user_id);
